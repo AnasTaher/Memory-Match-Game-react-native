@@ -126,7 +126,7 @@ export default function MMGrid(props) {
 
         let tile = tiles[index]
         let selectTile = { id, match: tiles[index].match, isPaired: tiles[index].isPaired };
-
+        
         if (selectTile.isPaired == false) {
             if (tileOne !== null && tileOne.id !== selectTile.id) {
                 console.log('Tile1')
@@ -134,6 +134,7 @@ export default function MMGrid(props) {
                 dispatch({ type: 'open', id });
 
             } else if (tileOne == null) {
+                tiles.map(e =>  {if(!e.isPaired) dispatch({ type: 'close', id: e.id }) })
                 console.log('Tile0')
                 setTileOne(selectTile);
                 dispatch({ type: 'open', id });
